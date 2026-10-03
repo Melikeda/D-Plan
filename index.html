@@ -25,13 +25,6 @@
     <header class="navbar-glass">
       <div class="container nav-inner">
         <a class="logo font-heading" href="#giris" translate="no">D-Plan</a>
-        <div class="controls">
-          <div class="lang" role="group" aria-label="Dil">
-            <button type="button" data-lang="tr" aria-pressed="true">TR</button>
-            <button type="button" data-lang="en" aria-pressed="false">EN</button>
-          </div>
-          <button type="button" id="theme" aria-pressed="false">Beyaz</button>
-        </div>
       </div>
     </header>
 
@@ -43,6 +36,22 @@
           <span class="text-gradient" data-i18n="accent"></span>
         </h1>
         <p class="lede" data-i18n="lede"></p>
+        <div class="dial" data-lang="tr" role="group" aria-label="Dil">
+          <button class="dial-lang" type="button" data-lang="tr" aria-pressed="true">
+            <span class="dial-code" translate="no">TR</span>
+            <span class="dial-name">Türkçe</span>
+          </button>
+          <button class="eclipse" id="theme" type="button" aria-pressed="false" aria-label="Beyaz ekrana geç">
+            <span class="eclipse-stage" aria-hidden="true">
+              <span class="eclipse-dark"></span>
+            </span>
+          </button>
+          <button class="dial-lang" type="button" data-lang="en" aria-pressed="false">
+            <span class="dial-code" translate="no">EN</span>
+            <span class="dial-name">English</span>
+          </button>
+          <span class="needle" aria-hidden="true"></span>
+        </div>
         <p class="note" data-i18n="note"></p>
       </section>
     </main>

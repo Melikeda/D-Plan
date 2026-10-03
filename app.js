@@ -5,8 +5,6 @@ const COPY = {
     eyebrow: "Günün tek cümlesi",
     lede: "Ekran siyah ya da beyaz olabilir. Dil, yazıların hepsini birlikte değiştirir.",
     note: "Seçimin bu cihazda kalır. Sunucuya gitmez.",
-    themeDark: "Beyaz",
-    themeLight: "Siyah",
     themeToLight: "Beyaz ekrana geç",
     themeToDark: "Siyah ekrana geç",
     langGroup: "Dil",
@@ -17,8 +15,6 @@ const COPY = {
     eyebrow: "One line for the day",
     lede: "The screen can be black or white. Language changes every line together.",
     note: "The choice stays on this device. Nothing is sent.",
-    themeDark: "White",
-    themeLight: "Black",
     themeToLight: "Switch to a white screen",
     themeToDark: "Switch to a black screen",
     langGroup: "Language",
@@ -50,8 +46,10 @@ function applyLanguage(lang) {
     const key = node.getAttribute("data-i18n");
     if (copy[key]) node.textContent = copy[key];
   });
-  document.querySelector(".lang").setAttribute("aria-label", copy.langGroup);
-  document.querySelectorAll("[data-lang]").forEach((button) => {
+  const dial = document.querySelector(".dial");
+  dial.dataset.lang = lang;
+  dial.setAttribute("aria-label", copy.langGroup);
+  document.querySelectorAll(".dial-lang").forEach((button) => {
     button.setAttribute("aria-pressed", button.getAttribute("data-lang") === lang ? "true" : "false");
   });
   writeChoice("dplan-lang", lang);
@@ -63,7 +61,6 @@ function applyTheme(theme) {
   const button = document.getElementById("theme");
   document.documentElement.dataset.theme = theme;
   const light = theme === "light";
-  button.textContent = light ? copy.themeLight : copy.themeDark;
   button.setAttribute("aria-pressed", light ? "true" : "false");
   button.setAttribute("aria-label", light ? copy.themeToDark : copy.themeToLight);
   writeChoice("dplan-theme", theme);
@@ -75,7 +72,7 @@ function init() {
   applyLanguage(lang);
   applyTheme(theme);
 
-  document.querySelectorAll("[data-lang]").forEach((button) => {
+  document.querySelectorAll(".dial-lang").forEach((button) => {
     button.addEventListener("click", () => {
       applyLanguage(button.getAttribute("data-lang"));
       applyTheme(document.documentElement.dataset.theme || "dark");

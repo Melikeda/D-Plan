@@ -34,10 +34,10 @@ Bu ikisini seçmemin nedeni, ikisinin de hesap, sunucu ve yapay zeka anahtarı i
 
 ## Ne yaptım
 
-Sağ üstte iki kontrol var.
+Kontroller sağ üstte duran iki kapsül değil. Başlığın altında tek bir kadran var.
 
-- **TR / EN** başlığı, açıklamayı ve renk düğmesinin adını birlikte değiştirir.
-- **Beyaz / Siyah** zemini ve yazı rengini değiştirir. Koyu ekranda düğme Beyaz yazar. Açık ekranda Siyah yazar. İngilizcede adlar White ve Black olur.
+- **TR** ve **EN** kadranın iki ucunda, büyük harfle durur. Seçilen dile pembe bir ibre döner. Başlık ve açıklama birlikte değişir.
+- Ortadaki daire siyah-beyaz bir tutulmadır. Siyah disk kayınca ekran açılır, geri kapanınca kararır. Düğmenin üzerinde Beyaz veya Siyah yazısı yoktur; anlamı hareket verir.
 
 Sayfa yenilense de son seçim durur. Kayıt `localStorage` içindedir. Metin ve renk tercihi sunucuya gitmez.
 

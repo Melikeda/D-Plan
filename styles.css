@@ -137,51 +137,137 @@ button {
   font-size: 1.35rem;
 }
 
-.controls {
-  display: flex;
+.dial {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 92px 1fr;
   align-items: center;
-  gap: 0.55rem;
+  width: min(100%, 440px);
+  margin: 2.6rem auto 0;
+  min-height: 128px;
 }
 
-.lang {
-  display: flex;
-  padding: 0.2rem;
-  background: var(--chip);
-  border: 1px solid var(--border-light);
+.dial::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 132px;
+  height: 132px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from -2deg,
+    transparent 0 14deg,
+    rgba(255, 61, 154, 0.55) 14deg 15.4deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 58%, #000 60% 76%, transparent 78%);
+  mask: radial-gradient(circle, transparent 58%, #000 60% 76%, transparent 78%);
+  pointer-events: none;
+}
+
+.needle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 92px;
+  height: 2px;
   border-radius: 999px;
+  background: linear-gradient(90deg, #ff3d9a, rgba(255, 61, 154, 0));
+  box-shadow: 0 0 16px rgba(255, 61, 154, 0.85);
+  transform: translateY(-50%) rotate(180deg);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
-.lang button,
-#theme {
+.dial[data-lang="en"] .needle {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.dial-lang,
+.eclipse {
+  position: relative;
+  z-index: 2;
   border: 0;
-  border-radius: 999px;
   background: transparent;
-  color: var(--text-anthracite);
+  color: var(--text-muted);
 }
 
-.lang button {
-  min-width: 2.6rem;
-  padding: 0.4rem 0.7rem;
-  font-size: 0.82rem;
-  font-weight: 700;
+.dial-lang {
+  padding: 0.2rem;
 }
 
-.lang button[aria-pressed="true"] {
-  color: #fff;
-  background: var(--primary-gradient);
+.dial-code {
+  display: block;
+  font-family: Outfit, sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
 
-#theme {
-  padding: 0.45rem 0.9rem;
-  font-weight: 700;
-  border: 1px solid var(--border-light);
-  background: var(--chip);
+.dial-name {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-button:focus-visible,
+.dial-lang[aria-pressed="true"] {
+  color: var(--text-main);
+}
+
+.dial-lang[aria-pressed="true"] .dial-code {
+  background: linear-gradient(135deg, #ff3d9a, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.eclipse {
+  width: 84px;
+  height: 84px;
+  justify-self: center;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.eclipse-stage {
+  display: block;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #f6f3f8;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.28),
+    0 14px 30px -16px rgba(255, 61, 154, 0.9);
+}
+
+.eclipse-dark {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #2a2a34, #07070b 62%);
+  transform: translateX(0);
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] .eclipse-dark {
+  transform: translateX(84%);
+}
+
+.dial-lang:focus-visible,
+.eclipse:focus-visible,
 .logo:focus-visible {
   outline: 2px solid #ff3d9a;
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
 .hero {
