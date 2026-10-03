@@ -1,0 +1,236 @@
+:root,
+[data-theme="dark"] {
+  --primary-gradient: linear-gradient(135deg, #431043, #d34681);
+  --bg-base: #0c0c12;
+  --bg-vignette: #060609;
+  --bg-card: #ffffff0a;
+  --text-main: #fff;
+  --text-anthracite: #ffffffbf;
+  --text-muted: #ffffff85;
+  --border-light: #ffffff17;
+  --nav: #0c0c12a6;
+  --chip: #ffffff0a;
+  --radius-md: 16px;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg-base: #f7f5f8;
+  --bg-vignette: #efeaf2;
+  --bg-card: #ffffff;
+  --text-main: #16141c;
+  --text-anthracite: #3a3544;
+  --text-muted: #6d6678;
+  --border-light: #e4dce8;
+  --nav: #ffffffcc;
+  --chip: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-base);
+  color: var(--text-main);
+  font-family: Inter, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+.font-heading {
+  font-family: Outfit, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ff3d9a, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container {
+  width: min(100% - 3rem, 760px);
+  margin: 0 auto;
+}
+
+.shape-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg-base);
+}
+
+.shape-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 42%, var(--bg-vignette) 100%);
+}
+
+.premium-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+}
+
+[data-theme="light"] .premium-shape {
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+
+.shape-1 {
+  top: -12%;
+  right: -8%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(255, 61, 154, 0.55), transparent 70%);
+}
+
+.shape-2 {
+  bottom: -8%;
+  left: -12%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.4), transparent 70%);
+}
+
+.navbar-glass {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--nav);
+  border-bottom: 1px solid var(--border-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 72px;
+}
+
+.logo {
+  font-size: 1.35rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.lang {
+  display: flex;
+  padding: 0.2rem;
+  background: var(--chip);
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+}
+
+.lang button,
+#theme {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-anthracite);
+}
+
+.lang button {
+  min-width: 2.6rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.lang button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--primary-gradient);
+}
+
+#theme {
+  padding: 0.45rem 0.9rem;
+  font-weight: 700;
+  border: 1px solid var(--border-light);
+  background: var(--chip);
+}
+
+button:focus-visible,
+.logo:focus-visible {
+  outline: 2px solid #ff3d9a;
+  outline-offset: 3px;
+}
+
+.hero {
+  padding: 5rem 0 3rem;
+  text-align: center;
+}
+
+.eyebrow,
+.note {
+  color: var(--text-muted);
+}
+
+.eyebrow {
+  margin-bottom: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  line-height: 1.05;
+}
+
+.lede {
+  max-width: 36rem;
+  margin: 1rem auto 0;
+  color: var(--text-anthracite);
+  font-size: 1.05rem;
+}
+
+.note {
+  margin-top: 1.4rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 680px) {
+  .container {
+    width: min(100% - 2rem, 760px);
+  }
+
+  .hero {
+    padding-top: 3.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

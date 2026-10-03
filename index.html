@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="tr" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; script-src 'self'; connect-src 'none'; base-uri 'self'; object-src 'none'"
+    />
+    <title>D-Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="shape-container" aria-hidden="true">
+      <div class="premium-shape shape-1"></div>
+      <div class="premium-shape shape-2"></div>
+    </div>
+
+    <header class="navbar-glass">
+      <div class="container nav-inner">
+        <a class="logo font-heading" href="#giris" translate="no">D-Plan</a>
+        <div class="controls">
+          <div class="lang" role="group" aria-label="Dil">
+            <button type="button" data-lang="tr" aria-pressed="true">TR</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <button type="button" id="theme" aria-pressed="false">Beyaz</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="giris" class="container">
+      <section class="hero">
+        <p class="eyebrow" data-i18n="eyebrow"></p>
+        <h1>
+          <span data-i18n="title"></span>
+          <span class="text-gradient" data-i18n="accent"></span>
+        </h1>
+        <p class="lede" data-i18n="lede"></p>
+        <p class="note" data-i18n="note"></p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
